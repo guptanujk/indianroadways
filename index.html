@@ -11,13 +11,15 @@
     >
 
     <title>Indian Roadways — The Sound of the Journey</title>
+    <link
+    rel="icon"
+    type="image/png"
+    href="assets/favicon.png"
+    >
 
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
@@ -38,11 +40,8 @@
 
 <main class="scene">
 
-
-    <!-- Background dark overlay -->
-
+    <!-- Dark overlay -->
     <div class="overlay"></div>
-
 
 
     <!-- =========================
@@ -50,9 +49,6 @@
     ========================== -->
 
     <header class="topbar">
-
-
-        <!-- Time -->
 
         <div
             class="time"
@@ -62,9 +58,6 @@
         </div>
 
 
-
-        <!-- Online -->
-
         <div class="online">
 
             <span class="online-dot"></span>
@@ -73,33 +66,20 @@
                 34
             </span>
 
-            <span>
-                online
-            </span>
+            online
 
         </div>
 
 
-
-        <!-- External music links -->
-
         <div class="links">
 
-
             <a
-                href="https://open.spotify.com/playlist/0rmIgHUJdj45xxIl9zPd2I"
+                href="https://open.spotify.com/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
-                Spotify
-
-                <span class="external">
-                    ↗
-                </span>
-
+                Spotify ↗
             </a>
-
 
 
             <a
@@ -107,15 +87,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-
-                YT Music
-
-                <span class="external">
-                    ↗
-                </span>
-
+                YT Music ↗
             </a>
-
 
         </div>
 
@@ -128,7 +101,6 @@
     ========================== -->
 
     <section class="hero">
-
 
         <div class="title-hindi">
             रोडवेज
@@ -144,42 +116,137 @@
             The sound of the journey.
         </p>
 
+    </section>
+
+
+
+    <!-- =========================
+         CUSTOM PLAYER
+    ========================== -->
+
+    <section class="player">
+
+
+        <!-- Album artwork -->
+
+        <div class="album-art">
+
+            <img
+                id="albumArt"
+                src="assets/background.png"
+                alt="Indian Roadways"
+            >
+
+        </div>
+
+
+
+        <!-- Track information -->
+
+        <div class="track-info">
+
+            <div
+                class="song-name"
+                id="songName"
+            >
+                Mujhse Mohabbat Ka Izhaar Karta
+            </div>
+
+
+            <div
+                class="artist"
+                id="artist"
+            >
+                Kumar Sanu, Alka Yagnik
+            </div>
+
+
+            <!-- Progress -->
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar"
+                >
+
+                    <div
+                        class="progress"
+                        id="progress"
+                    ></div>
+
+                </div>
+
+
+                <div class="time-labels">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <span id="duration">
+                        0:00
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Controls -->
+
+        <div class="controls">
+
+            <button
+                id="previousBtn"
+                class="side-button"
+                aria-label="Previous song"
+            >
+                |◀
+            </button>
+
+
+            <button
+                id="playBtn"
+                class="play-button"
+                aria-label="Play"
+            >
+                ▶
+            </button>
+
+
+            <button
+                id="nextBtn"
+                class="side-button"
+                aria-label="Next song"
+            >
+                ▶|
+            </button>
+
+        </div>
+
 
     </section>
 
 
 
     <!-- =========================
-         SPOTIFY PLAYER
+         AUDIO
     ========================== -->
 
-    <section class="spotify-player">
-
-        <div
-            id="spotify-embed"
-            class="spotify-embed"
-        ></div>
-
-    </section>
-
+    <audio
+        id="audio"
+        preload="metadata"
+    ></audio>
 
 
 </main>
 
 
-
-<!-- Spotify iFrame API -->
-
-<script
-    src="https://open.spotify.com/embed/iframe-api/v1"
-    async
-></script>
-
-
-<!-- Our JavaScript -->
-
 <script src="script.js"></script>
-
 
 </body>
 

@@ -1,19 +1,432 @@
 /* =========================================
    INDIAN ROADWAYS
-   Spotify iFrame Embed
+   CUSTOM MUSIC PLAYER
 ========================================= */
 
 
 /* =========================================
-   PLAYLIST
+   SONG LIBRARY
 ========================================= */
 
-const PLAYLIST_ID =
-    "0rmIgHUJdj45xxIl9zPd2I";
+const songs = [
+
+    {
+        title:
+            "Mujhse Mohabbat Ka Izhaar Karta",
+
+        artist:
+            "Kumar Sanu, Alka Yagnik",
+
+        src:
+            "assets/songs/Hindi/song.mp3"
+    },
 
 
-const PLAYLIST_URI =
-    `spotify:playlist:${PLAYLIST_ID}`;
+    {
+        title:
+            "Tumsa Koi Pyaara",
+
+        artist:
+            "Kumar Sanu, Alka Yagnik",
+
+        src:
+            "assets/songs/Hindi/song2.mp3"
+    }
+
+];
+
+
+
+/* =========================================
+   CURRENT SONG
+========================================= */
+
+let currentSong = 0;
+
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const audio =
+    document.getElementById("audio");
+
+
+const playBtn =
+    document.getElementById("playBtn");
+
+
+const previousBtn =
+    document.getElementById("previousBtn");
+
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+
+const songName =
+    document.getElementById("songName");
+
+
+const artist =
+    document.getElementById("artist");
+
+
+const progress =
+    document.getElementById("progress");
+
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+const currentTime =
+    document.getElementById("currentTime");
+
+
+const duration =
+    document.getElementById("duration");
+
+
+const time =
+    document.getElementById("time");
+
+
+const listeners =
+    document.getElementById("listeners");
+
+
+const albumArt =
+    document.getElementById("albumArt");
+
+
+
+/* =========================================
+   LOAD SONG
+========================================= */
+
+function loadSong(index) {
+
+    currentSong = index;
+
+    const song =
+        songs[currentSong];
+
+
+    songName.textContent =
+        song.title;
+
+
+    artist.textContent =
+        song.artist;
+
+
+    audio.src =
+        song.src;
+
+
+    audio.load();
+
+
+    progress.style.width =
+        "0%";
+
+
+    currentTime.textContent =
+        "0:00";
+
+
+    duration.textContent =
+        "0:00";
+
+}
+
+
+
+/* =========================================
+   PLAY SONG
+========================================= */
+
+async function playSong() {
+
+    try {
+
+        await audio.play();
+
+        playBtn.textContent =
+            "Ⅱ";
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Playback failed:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   PAUSE SONG
+========================================= */
+
+function pauseSong() {
+
+    audio.pause();
+
+    playBtn.textContent =
+        "▶";
+
+}
+
+
+
+/* =========================================
+   PLAY / PAUSE
+========================================= */
+
+playBtn.addEventListener(
+    "click",
+    () => {
+
+        if (audio.paused) {
+
+            playSong();
+
+        }
+        else {
+
+            pauseSong();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   NEXT SONG
+========================================= */
+
+function nextSong() {
+
+    currentSong++;
+
+    if (
+        currentSong >=
+        songs.length
+    ) {
+
+        currentSong = 0;
+
+    }
+
+
+    loadSong(
+        currentSong
+    );
+
+
+    playSong();
+
+}
+
+
+nextBtn.addEventListener(
+    "click",
+    nextSong
+);
+
+
+
+/* =========================================
+   PREVIOUS SONG
+========================================= */
+
+function previousSong() {
+
+    currentSong--;
+
+    if (
+        currentSong < 0
+    ) {
+
+        currentSong =
+            songs.length - 1;
+
+    }
+
+
+    loadSong(
+        currentSong
+    );
+
+
+    playSong();
+
+}
+
+
+previousBtn.addEventListener(
+    "click",
+    previousSong
+);
+
+
+
+/* =========================================
+   AUTOMATIC NEXT
+========================================= */
+
+audio.addEventListener(
+    "ended",
+    () => {
+
+        nextSong();
+
+    }
+);
+
+
+
+/* =========================================
+   TIME UPDATE
+========================================= */
+
+audio.addEventListener(
+    "timeupdate",
+    () => {
+
+        if (
+            !audio.duration ||
+            isNaN(audio.duration)
+        ) {
+
+            return;
+
+        }
+
+
+        const percentage =
+            (
+                audio.currentTime /
+                audio.duration
+            ) * 100;
+
+
+        progress.style.width =
+            `${percentage}%`;
+
+
+        currentTime.textContent =
+            formatTime(
+                audio.currentTime
+            );
+
+    }
+);
+
+
+
+/* =========================================
+   LOAD DURATION
+========================================= */
+
+audio.addEventListener(
+    "loadedmetadata",
+    () => {
+
+        duration.textContent =
+            formatTime(
+                audio.duration
+            );
+
+    }
+);
+
+
+
+/* =========================================
+   CLICK PROGRESS BAR
+========================================= */
+
+progressBar.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            !audio.duration ||
+            isNaN(audio.duration)
+        ) {
+
+            return;
+
+        }
+
+
+        const rect =
+            progressBar.getBoundingClientRect();
+
+
+        const percentage =
+            (
+                event.clientX -
+                rect.left
+            ) / rect.width;
+
+
+        audio.currentTime =
+            audio.duration *
+            percentage;
+
+    }
+);
+
+
+
+/* =========================================
+   FORMAT TIME
+========================================= */
+
+function formatTime(seconds) {
+
+    if (
+        !seconds ||
+        isNaN(seconds)
+    ) {
+
+        return "0:00";
+
+    }
+
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+
+    const remainingSeconds =
+        Math.floor(
+            seconds % 60
+        );
+
+
+    return (
+        `${minutes}:` +
+        String(
+            remainingSeconds
+        ).padStart(2, "0")
+    );
+
+}
 
 
 
@@ -47,9 +460,7 @@ function updateClock() {
         hours % 12 || 12;
 
 
-    document.getElementById(
-        "time"
-    ).textContent =
+    time.textContent =
         `${hours}:${minutes} ${period}`;
 
 }
@@ -71,16 +482,14 @@ setInterval(
 
 function updateListeners() {
 
-    const listeners =
+    const number =
         Math.floor(
             Math.random() * 15
         ) + 25;
 
 
-    document.getElementById(
-        "listeners"
-    ).textContent =
-        listeners;
+    listeners.textContent =
+        number;
 
 }
 
@@ -96,83 +505,7 @@ setInterval(
 
 
 /* =========================================
-   SPOTIFY IFRAME API
+   INITIAL SONG
 ========================================= */
 
-window.onSpotifyIframeApiReady =
-    (IFrameAPI) => {
-
-
-        console.log(
-            "Spotify iFrame API ready"
-        );
-
-
-        const element =
-            document.getElementById(
-                "spotify-embed"
-            );
-
-
-        const options = {
-
-            width: "100%",
-
-            height: 152,
-
-            uri: PLAYLIST_URI
-
-        };
-
-
-        const callback =
-            (EmbedController) => {
-
-
-                console.log(
-                    "Spotify player ready"
-                );
-
-
-                /*
-                 * Keep the controller available.
-                 *
-                 * Later we can use it to:
-                 *
-                 * - load another track
-                 * - play
-                 * - pause
-                 * - react to playback events
-                 */
-
-                window.spotifyController =
-                    EmbedController;
-
-
-
-                /* =========================
-                   PLAYBACK STARTED
-                ========================== */
-
-                EmbedController.addListener(
-                    "playback_started",
-                    (event) => {
-
-                        console.log(
-                            "Now playing:",
-                            event.data.playingURI
-                        );
-
-                    }
-                );
-
-            };
-
-
-        IFrameAPI.createController(
-            element,
-            options,
-            callback
-        );
-
-    };
+loadSong(0);
