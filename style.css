@@ -85,7 +85,7 @@ body {
     height: 100vh;
 
     background-image:
-        url("assets/b6.png");
+        url("assets/b12.png");
 
     background-size:
         cover;
@@ -170,6 +170,7 @@ body {
 ========================================= */
 
 .time {
+    
 
     font-size:
         14px;
@@ -182,6 +183,7 @@ body {
 
     opacity:
         0.9;
+        
 
 }
 
@@ -191,7 +193,7 @@ body {
    ONLINE
 ========================================= */
 
-.online {
+/* .online {
 
     position:
         absolute;
@@ -220,10 +222,43 @@ body {
     opacity:
         0.75;
 
+} */
+
+
+.online {
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: rgba(18, 27, 23, 0.55);
+
+    border: 1px solid rgba(245, 234, 212, 0.12);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color: #FFF3D8;
+
+    opacity: 0.95;
 }
 
 
-.online-dot {
+/* .online-dot {
 
     width:
         7px;
@@ -241,6 +276,18 @@ body {
         0 0 10px
         rgba(121, 193, 132, 0.55);
 
+} */
+
+.online-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #78C77F;
+
+    box-shadow:
+        0 0 8px rgba(120, 199, 127, 0.7);
 }
 
 
@@ -340,6 +387,83 @@ body {
         none;
 
 }
+.hero {
+    position: absolute;
+
+    top: 15%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+/* Subtle dark area behind title */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 600px;
+    height: 350px;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(20, 18, 14, 0.22) 0%,
+            rgba(20, 18, 14, 0.08) 45%,
+            transparent 72%
+        );
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* Roadways title */
+
+.roadways-title {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-family: "Amita", serif;
+
+    font-weight: 1000;
+
+    line-height: 1;
+
+    letter-spacing: 5;
+
+    color: #FFF3D8;
+
+    text-shadow:
+        2px 2px 0 #38291F,
+        -2px 2px 0 #38291F,
+        2px -2px 0 #38291F,
+        -2px -2px 0 #38291F,
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
 
 
 
@@ -376,13 +500,26 @@ body {
     transform: translateX(-8px);
 
     margin-bottom: 10px;
+    /* text-shadow:
+        2px 2px 0 #38291F,
+        -2px 2px 0 #38291F,
+        2px -2px 0 #38291F,
+        -2px -2px 0 #38291F,
+        0 8px 25px rgba(0, 0, 0, 0.35); */
 }
 
 
 .roadways-title .roadways {
     font-size: clamp(75px, 9vw, 145px);
-}
 
+/* text-shadow:
+        2px 2px 0 #38291F,
+        -2px 2px 0 #38291F,
+        2px -2px 0 #38291F,
+        -2px -2px 0 #38291F,
+        0 8px 25px rgba(0, 0, 0, 0.35); */
+
+}
 
 
 
@@ -390,7 +527,7 @@ body {
    PLAYER
 ========================================= */
 
-.player {
+/* .player {
 
     position:
         absolute;
@@ -460,6 +597,53 @@ body {
         0 22px 65px
         rgba(0, 0, 0, 0.52);
 
+} */
+
+.player {
+    position: absolute;
+
+    left: 50%;
+    bottom: 28px;
+
+    transform: translateX(-50%);
+
+    width: min(780px, calc(100vw - 40px));
+
+    min-height: 94px;
+
+    padding: 10px 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    z-index: 30;
+
+    border-radius: 52px;
+
+    /* Transparent glass */
+    /* background: rgba(20, 27, 24, 0);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px); */
+
+background: rgba(20, 27, 24, 0.48);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+
+    /* Subtle glass border */
+    border: 1px solid rgba(245, 234, 212, 0.18);
+
+    /* Blur whatever is behind the player */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.38);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 

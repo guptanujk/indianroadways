@@ -463,7 +463,7 @@ function updateListeners() {
     const number =
         Math.floor(
             Math.random() * 15
-        ) + 25;
+        ) + 2500;
 
 
     listeners.textContent =
