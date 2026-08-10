@@ -1,0 +1,432 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    overflow: hidden;
+
+    background: #241712;
+
+    color: white;
+
+}
+
+
+/* =========================================
+   MAIN SCENE
+========================================= */
+
+.scene {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image:
+        url("assets/background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+}
+
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+
+            rgba(0, 0, 0, 0.25) 0%,
+
+            rgba(0, 0, 0, 0.02) 45%,
+
+            rgba(0, 0, 0, 0.40) 100%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding:
+        28px
+        32px;
+
+    display: flex;
+
+    align-items: center;
+
+    z-index: 10;
+
+}
+
+
+/* =========================================
+   TIME
+========================================= */
+
+.time {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================
+   ONLINE
+========================================= */
+
+.online {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+
+.online-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #00e676;
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 230, 118, 0.7);
+
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.links {
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+
+.links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition:
+        opacity 0.2s ease;
+
+}
+
+
+.links a:hover {
+
+    opacity: 0.65;
+
+}
+
+
+.external {
+
+    margin-left: 3px;
+
+    opacity: 0.7;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+
+    z-index: 5;
+
+}
+
+
+/* Hindi title */
+
+.title-hindi {
+
+    font-family:
+        "Noto Sans Devanagari",
+        sans-serif;
+
+    font-size:
+        clamp(
+            75px,
+            10vw,
+            170px
+        );
+
+    font-weight: 600;
+
+    line-height: 0.9;
+
+    letter-spacing: -6px;
+
+    text-shadow:
+        0 5px 30px
+        rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* English title */
+
+.title-english {
+
+    margin-top: 22px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: 7px;
+
+}
+
+
+/* Tagline */
+
+.tagline {
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================
+   SPOTIFY PLAYER
+========================================= */
+
+.spotify-player {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 35px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(
+            500px,
+            calc(100vw - 40px)
+        );
+
+    height: 152px;
+
+    z-index: 20;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* Spotify iframe container */
+
+.spotify-embed {
+
+    width: 100%;
+
+    height: 152px;
+
+}
+
+
+/* Spotify generated iframe */
+
+.spotify-embed iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 152px;
+
+    border: 0;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+
+    .topbar {
+
+        padding:
+            20px;
+
+    }
+
+
+    .online {
+
+        display: none;
+
+    }
+
+
+    .links {
+
+        gap: 14px;
+
+    }
+
+
+    .links a {
+
+        font-size: 12px;
+
+    }
+
+
+    .title-hindi {
+
+        font-size: 70px;
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .title-english {
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .tagline {
+
+        font-size: 12px;
+
+    }
+
+
+    .spotify-player {
+
+        width:
+            calc(100vw - 20px);
+
+        bottom: 20px;
+
+        height: 152px;
+
+    }
+
+
+}

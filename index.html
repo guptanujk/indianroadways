@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Indian Roadways — The Sound of the Journey</title>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+<main class="scene">
+
+
+    <!-- Background dark overlay -->
+
+    <div class="overlay"></div>
+
+
+
+    <!-- =========================
+         TOP BAR
+    ========================== -->
+
+    <header class="topbar">
+
+
+        <!-- Time -->
+
+        <div
+            class="time"
+            id="time"
+        >
+            6:00 pm
+        </div>
+
+
+
+        <!-- Online -->
+
+        <div class="online">
+
+            <span class="online-dot"></span>
+
+            <span id="listeners">
+                34
+            </span>
+
+            <span>
+                online
+            </span>
+
+        </div>
+
+
+
+        <!-- External music links -->
+
+        <div class="links">
+
+
+            <a
+                href="https://open.spotify.com/playlist/0rmIgHUJdj45xxIl9zPd2I"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                Spotify
+
+                <span class="external">
+                    ↗
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="https://music.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                YT Music
+
+                <span class="external">
+                    ↗
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+
+        <div class="title-hindi">
+            रोडवेज
+        </div>
+
+
+        <div class="title-english">
+            INDIAN ROADWAYS
+        </div>
+
+
+        <p class="tagline">
+            The sound of the journey.
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         SPOTIFY PLAYER
+    ========================== -->
+
+    <section class="spotify-player">
+
+        <div
+            id="spotify-embed"
+            class="spotify-embed"
+        ></div>
+
+    </section>
+
+
+
+</main>
+
+
+
+<!-- Spotify iFrame API -->
+
+<script
+    src="https://open.spotify.com/embed/iframe-api/v1"
+    async
+></script>
+
+
+<!-- Our JavaScript -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
