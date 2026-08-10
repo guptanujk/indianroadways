@@ -697,6 +697,33 @@ backdrop-filter: blur(10px);
         cover;
 
 }
+/* =================================
+   ROTATING RECORD
+================================== */
+
+#albumArt {
+    display: block;
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+}
+
+/* Rotate only while music is playing */
+#albumArt.playing {
+    animation: recordSpin 8s linear infinite;
+}
+
+@keyframes recordSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
 
 
 
