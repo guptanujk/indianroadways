@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
 
@@ -10,15 +10,19 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Indian Roadways — The Sound of the Journey</title>
+    <title>डीलक्स रोडवेज</title>
+
+
+    <!-- Favicon -->
+
     <link
-    rel="icon"
-    type="image/png"
-    href="assets/favicon.png"
+        rel="icon"
+        type="image/png"
+        href="assets/favicon.png"
     >
 
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -29,8 +33,16 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Cormorant:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
     >
 
 </head>
@@ -40,15 +52,21 @@
 
 <main class="scene">
 
-    <!-- Dark overlay -->
+
+    <!-- =================================
+         BACKGROUND
+    ================================== -->
+
     <div class="overlay"></div>
 
 
-    <!-- =========================
+
+    <!-- =================================
          TOP BAR
-    ========================== -->
+    ================================== -->
 
     <header class="topbar">
+
 
         <div
             class="time"
@@ -56,6 +74,7 @@
         >
             6:00 pm
         </div>
+
 
 
         <div class="online">
@@ -66,19 +85,21 @@
                 34
             </span>
 
-            online
+            <span>online</span>
 
         </div>
 
 
-        <div class="links">
+
+        <nav class="links">
 
             <a
                 href="https://open.spotify.com/"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Spotify ↗
+                Spotify
+                <span>↗</span>
             </a>
 
 
@@ -87,63 +108,69 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                YT Music ↗
+                YT Music
+                <span>↗</span>
             </a>
 
-        </div>
+        </nav>
+
 
     </header>
 
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- =================================
+         TITLE
+    ================================== -->
 
     <section class="hero">
 
-        <div class="title-hindi">
-            रोडवेज
-        </div>
+        <h1 class="roadways-title">
 
+            <span class="deluxe">
+                डीलक्स
+            </span>
 
-        <div class="title-english">
-            INDIAN ROADWAYS
-        </div>
+            <span class="roadways">
+                रोडवेज
+            </span>
 
-
-        <p class="tagline">
-            The sound of the journey.
-        </p>
+        </h1>
 
     </section>
 
 
 
-    <!-- =========================
-         CUSTOM PLAYER
-    ========================== -->
+    <!-- =================================
+         CUSTOM MUSIC PLAYER
+    ================================== -->
 
     <section class="player">
 
 
-        <!-- Album artwork -->
+        <!-- Album art -->
 
         <div class="album-art">
 
             <img
                 id="albumArt"
-                src="assets/background.png"
-                alt="Indian Roadways"
+                src="assets\songs\Hindi\song-image\song1.jpg"
+                alt="Current song"
             >
 
         </div>
 
 
 
-        <!-- Track information -->
+        <!-- Song information -->
 
         <div class="track-info">
+
+
+            <div class="now-playing">
+                NOW PLAYING
+            </div>
+
 
             <div
                 class="song-name"
@@ -161,9 +188,11 @@
             </div>
 
 
+
             <!-- Progress -->
 
             <div class="progress-container">
+
 
                 <div
                     class="progress-bar"
@@ -178,6 +207,7 @@
                 </div>
 
 
+
                 <div class="time-labels">
 
                     <span id="currentTime">
@@ -190,7 +220,9 @@
 
                 </div>
 
+
             </div>
+
 
         </div>
 
@@ -200,6 +232,7 @@
 
         <div class="controls">
 
+
             <button
                 id="previousBtn"
                 class="side-button"
@@ -207,6 +240,7 @@
             >
                 |◀
             </button>
+
 
 
             <button
@@ -218,6 +252,7 @@
             </button>
 
 
+
             <button
                 id="nextBtn"
                 class="side-button"
@@ -226,6 +261,7 @@
                 ▶|
             </button>
 
+
         </div>
 
 
@@ -233,9 +269,9 @@
 
 
 
-    <!-- =========================
+    <!-- =================================
          AUDIO
-    ========================== -->
+    ================================== -->
 
     <audio
         id="audio"

@@ -1,5 +1,5 @@
 /* =========================================
-   INDIAN ROADWAYS
+   DELUXE ROADWAYS
    CUSTOM MUSIC PLAYER
 ========================================= */
 
@@ -18,7 +18,7 @@ const songs = [
             "Kumar Sanu, Alka Yagnik",
 
         src:
-            "assets/songs/Hindi/song.mp3"
+            "assets/songs/Hindi/song1.mp3"
     },
 
 
@@ -52,53 +52,38 @@ let currentSong = 0;
 const audio =
     document.getElementById("audio");
 
-
 const playBtn =
     document.getElementById("playBtn");
-
 
 const previousBtn =
     document.getElementById("previousBtn");
 
-
 const nextBtn =
     document.getElementById("nextBtn");
-
 
 const songName =
     document.getElementById("songName");
 
-
 const artist =
     document.getElementById("artist");
-
 
 const progress =
     document.getElementById("progress");
 
-
 const progressBar =
     document.getElementById("progressBar");
-
 
 const currentTime =
     document.getElementById("currentTime");
 
-
 const duration =
     document.getElementById("duration");
-
 
 const time =
     document.getElementById("time");
 
-
 const listeners =
     document.getElementById("listeners");
-
-
-const albumArt =
-    document.getElementById("albumArt");
 
 
 
@@ -117,7 +102,6 @@ function loadSong(index) {
     songName.textContent =
         song.title;
 
-
     artist.textContent =
         song.artist;
 
@@ -125,17 +109,14 @@ function loadSong(index) {
     audio.src =
         song.src;
 
-
     audio.load();
 
 
     progress.style.width =
         "0%";
 
-
     currentTime.textContent =
         "0:00";
-
 
     duration.textContent =
         "0:00";
@@ -145,7 +126,7 @@ function loadSong(index) {
 
 
 /* =========================================
-   PLAY SONG
+   PLAY
 ========================================= */
 
 async function playSong() {
@@ -173,7 +154,7 @@ async function playSong() {
 
 
 /* =========================================
-   PAUSE SONG
+   PAUSE
 ========================================= */
 
 function pauseSong() {
@@ -199,8 +180,7 @@ playBtn.addEventListener(
 
             playSong();
 
-        }
-        else {
+        } else {
 
             pauseSong();
 
@@ -212,7 +192,7 @@ playBtn.addEventListener(
 
 
 /* =========================================
-   NEXT SONG
+   NEXT
 ========================================= */
 
 function nextSong() {
@@ -233,7 +213,6 @@ function nextSong() {
         currentSong
     );
 
-
     playSong();
 
 }
@@ -247,7 +226,7 @@ nextBtn.addEventListener(
 
 
 /* =========================================
-   PREVIOUS SONG
+   PREVIOUS
 ========================================= */
 
 function previousSong() {
@@ -268,7 +247,6 @@ function previousSong() {
         currentSong
     );
 
-
     playSong();
 
 }
@@ -282,7 +260,7 @@ previousBtn.addEventListener(
 
 
 /* =========================================
-   AUTOMATIC NEXT
+   AUTO NEXT
 ========================================= */
 
 audio.addEventListener(
@@ -297,7 +275,7 @@ audio.addEventListener(
 
 
 /* =========================================
-   TIME UPDATE
+   PROGRESS
 ========================================= */
 
 audio.addEventListener(
@@ -336,7 +314,7 @@ audio.addEventListener(
 
 
 /* =========================================
-   LOAD DURATION
+   DURATION
 ========================================= */
 
 audio.addEventListener(
@@ -354,7 +332,7 @@ audio.addEventListener(
 
 
 /* =========================================
-   CLICK PROGRESS BAR
+   SEEK
 ========================================= */
 
 progressBar.addEventListener(
