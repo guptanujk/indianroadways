@@ -700,29 +700,14 @@ backdrop-filter: blur(10px);
 /* =================================
    ROTATING RECORD
 ================================== */
-
-#albumArt {
-    display: block;
-    width: 68px;
-    height: 68px;
-    object-fit: contain;
-}
-
-/* Rotate only while music is playing */
-#albumArt.playing {
-    animation: recordSpin 8s linear infinite;
-}
-
-@keyframes recordSpin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+#youtube-player {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 
