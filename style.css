@@ -3,11 +3,6 @@
    VISUAL THEME
 ========================================= */
 
-
-/* =========================================
-   COLORS
-========================================= */
-
 :root {
 
     --cream: #f5ead4;
@@ -47,6 +42,13 @@ body {
 }
 
 
+html {
+
+    background: #101613;
+
+}
+
+
 body {
 
     font-family:
@@ -71,7 +73,12 @@ body {
     position: relative;
 
     width: 100vw;
+    width: 100dvw;
+
     height: 100vh;
+    height: 100dvh;
+
+    min-height: 100svh;
 
     background-image:
         url("assets/b12.png");
@@ -277,7 +284,8 @@ body {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 90%;
 
@@ -291,7 +299,7 @@ body {
 
 
 /* =========================================
-   TITLE BACKGROUND GLOW
+   TITLE GLOW
 ========================================= */
 
 .hero::before {
@@ -390,10 +398,12 @@ body {
 
 .player {
 
-    position: absolute;
+    position: fixed;
 
     left: 50%;
-    bottom: 28px;
+
+    bottom:
+        calc(28px + env(safe-area-inset-bottom));
 
     transform:
         translateX(-50%);
@@ -414,7 +424,7 @@ body {
 
     gap: 17px;
 
-    z-index: 30;
+    z-index: 9999;
 
     border-radius: 52px;
 
@@ -434,10 +444,6 @@ body {
     box-shadow:
         0 18px 50px
         rgba(0, 0, 0, 0.38);
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
 
 }
 
@@ -628,9 +634,6 @@ body {
 
     border-radius: 10px;
 
-    transition:
-        width 0.15s linear;
-
 }
 
 
@@ -665,6 +668,8 @@ body {
     align-items: center;
 
     gap: 13px;
+
+    flex-shrink: 0;
 
 }
 
@@ -752,6 +757,8 @@ body {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
     background:
@@ -811,7 +818,6 @@ body {
 
 @media (max-width: 700px) {
 
-
     .topbar {
 
         padding:
@@ -864,14 +870,27 @@ body {
     }
 
 
-    /* PLAYER */
+    /* =================================
+       MOBILE PLAYER
+    ================================== */
 
     .player {
 
+        position: fixed;
+
+        left: 50%;
+
+        bottom:
+            calc(
+                10px +
+                env(safe-area-inset-bottom)
+            );
+
+        transform:
+            translateX(-50%);
+
         width:
             calc(100vw - 20px);
-
-        bottom: 14px;
 
         min-height: 82px;
 
@@ -880,7 +899,26 @@ body {
 
         gap: 11px;
 
+        z-index: 99999;
+
         border-radius: 44px;
+
+        background:
+            rgba(20, 27, 24, 0.82);
+
+        backdrop-filter:
+            blur(14px);
+
+        -webkit-backdrop-filter:
+            blur(14px);
+
+        border:
+            1px solid
+            rgba(245, 234, 212, 0.18);
+
+        box-shadow:
+            0 12px 40px
+            rgba(0, 0, 0, 0.55);
 
     }
 
@@ -889,6 +927,15 @@ body {
 
         width: 54px;
         height: 54px;
+
+    }
+
+
+    .track-info {
+
+        flex: 1;
+
+        min-width: 0;
 
     }
 
@@ -914,14 +961,25 @@ body {
     }
 
 
+    .progress-container {
+
+        margin-top: 7px;
+
+    }
+
+
     .controls {
 
         gap: 5px;
+
+        flex-shrink: 0;
 
     }
 
 
     .side-button {
+
+        display: flex;
 
         width: 21px;
         height: 35px;
@@ -949,7 +1007,6 @@ body {
 
 @media (max-width: 400px) {
 
-
     .roadways-title .deluxe {
 
         font-size: 47px;
@@ -971,6 +1028,29 @@ body {
     }
 
 
+    .player {
+
+        width:
+            calc(100vw - 14px);
+
+        bottom:
+            calc(
+                7px +
+                env(safe-area-inset-bottom)
+            );
+
+        min-height: 78px;
+
+        padding:
+            7px 9px;
+
+        gap: 8px;
+
+        border-radius: 40px;
+
+    }
+
+
     .album-art {
 
         width: 48px;
@@ -982,6 +1062,13 @@ body {
     .song-name {
 
         font-size: 12px;
+
+    }
+
+
+    .artist {
+
+        font-size: 9px;
 
     }
 
