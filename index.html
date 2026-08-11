@@ -68,9 +68,7 @@
     <div class="scene">
 
 
-        <!-- =================================
-             BACKGROUND OVERLAY
-        ================================== -->
+        <!-- BACKGROUND OVERLAY -->
 
         <div class="overlay"></div>
 
@@ -143,10 +141,13 @@
 
 
         <!-- =================================
-             CUSTOM MUSIC PLAYER
+             MUSIC PLAYER
         ================================== -->
 
-        <section class="player">
+        <section
+            class="player"
+            aria-label="Music player"
+        >
 
 
             <!-- ALBUM ART -->
@@ -156,7 +157,7 @@
                 <img
                     id="albumArt"
                     src="assets/songs/Hindi/song-image/gmo.svg"
-                    alt="Current song"
+                    alt="Current song artwork"
                 >
 
             </div>
@@ -176,7 +177,7 @@
                     class="song-name"
                     id="songName"
                 >
-                    Mujhse Mohabbat Ka Izhaar Karta
+                    Loading...
                 </div>
 
 
@@ -184,7 +185,7 @@
                     class="artist"
                     id="artist"
                 >
-                    Kumar Sanu, Alka Yagnik
+                    —
                 </div>
 
 
@@ -195,6 +196,12 @@
                     <div
                         class="progress-bar"
                         id="progressBar"
+                        role="slider"
+                        aria-label="Song progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                        tabindex="0"
                     >
 
                         <div
@@ -281,7 +288,7 @@
 
 
     <!-- =================================
-         YOUR JAVASCRIPT
+         JAVASCRIPT
     ================================== -->
 
     <script

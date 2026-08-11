@@ -11,21 +11,17 @@
 :root {
 
     --cream: #f5ead4;
-
     --cream-soft: #e9dcc4;
 
     --dark: #17201c;
-
     --dark-soft: rgba(20, 28, 25, 0.86);
 
     --gold: #d1ad70;
-
     --green: #78927b;
 
     --white-soft: rgba(255, 255, 255, 0.72);
 
 }
-
 
 
 /* =========================================
@@ -35,7 +31,6 @@
 * {
 
     margin: 0;
-
     padding: 0;
 
     box-sizing: border-box;
@@ -47,7 +42,6 @@ html,
 body {
 
     width: 100%;
-
     height: 100%;
 
 }
@@ -59,17 +53,13 @@ body {
         "Space Grotesk",
         sans-serif;
 
-    background:
-        #101613;
+    background: #101613;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
 }
-
 
 
 /* =========================================
@@ -81,23 +71,18 @@ body {
     position: relative;
 
     width: 100vw;
-
     height: 100vh;
 
     background-image:
         url("assets/b12.png");
 
-    background-size:
-        cover;
+    background-size: cover;
 
-    background-position:
-        center;
+    background-position: center;
 
-    background-repeat:
-        no-repeat;
+    background-repeat: no-repeat;
 
 }
-
 
 
 /* =========================================
@@ -114,25 +99,15 @@ body {
 
         linear-gradient(
             180deg,
-
-            rgba(12, 18, 16, 0.30)
-            0%,
-
-            rgba(12, 18, 16, 0.03)
-            40%,
-
-            rgba(12, 18, 16, 0.08)
-            60%,
-
-            rgba(12, 18, 16, 0.62)
-            100%
+            rgba(12, 18, 16, 0.30) 0%,
+            rgba(12, 18, 16, 0.03) 40%,
+            rgba(12, 18, 16, 0.08) 60%,
+            rgba(12, 18, 16, 0.62) 100%
         );
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
 }
-
 
 
 /* =========================================
@@ -144,25 +119,19 @@ body {
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
 
-    padding:
-        25px 30px;
+    padding: 25px 30px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    z-index:
-        20;
+    z-index: 20;
 
 }
-
 
 
 /* =========================================
@@ -170,62 +139,24 @@ body {
 ========================================= */
 
 .time {
-    
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    font-weight:
-        500;
+    font-weight: 500;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
-    opacity:
-        0.9;
-        
+    opacity: 0.9;
 
 }
-
 
 
 /* =========================================
    ONLINE
 ========================================= */
 
-/* .online {
-
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    transform:
-        translateX(-50%);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        7px;
-
-    font-size:
-        12px;
-
-    color:
-        var(--cream);
-
-    opacity:
-        0.75;
-
-} */
-
-
 .online {
+
     position: absolute;
 
     left: 50%;
@@ -233,6 +164,7 @@ body {
     transform: translateX(-50%);
 
     display: flex;
+
     align-items: center;
 
     gap: 7px;
@@ -241,55 +173,44 @@ body {
 
     border-radius: 20px;
 
-    background: rgba(18, 27, 23, 0.55);
+    background:
+        rgba(18, 27, 23, 0.55);
 
-    border: 1px solid rgba(245, 234, 212, 0.12);
+    border:
+        1px solid
+        rgba(245, 234, 212, 0.12);
 
     backdrop-filter: blur(8px);
+
     -webkit-backdrop-filter: blur(8px);
 
     font-size: 12px;
 
     font-weight: 500;
 
-    color: #FFF3D8;
+    color: #fff3d8;
 
     opacity: 0.95;
+
 }
 
 
-/* .online-dot {
-
-    width:
-        7px;
-
-    height:
-        7px;
-
-    border-radius:
-        50%;
-
-    background:
-        #79c184;
-
-    box-shadow:
-        0 0 10px
-        rgba(121, 193, 132, 0.55);
-
-} */
-
 .online-dot {
+
     width: 7px;
     height: 7px;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
-    background: #78C77F;
+    background: #78c77f;
 
     box-shadow:
-        0 0 8px rgba(120, 199, 127, 0.7);
-}
+        0 0 8px
+        rgba(120, 199, 127, 0.7);
 
+}
 
 
 /* =========================================
@@ -298,62 +219,50 @@ body {
 
 .links {
 
-    margin-left:
-        auto;
+    margin-left: auto;
 
-    display:
-        flex;
+    display: flex;
 
-    gap:
-        24px;
+    gap: 24px;
 
 }
 
 
 .links a {
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    font-weight:
-        500;
+    font-weight: 500;
 
-    opacity:
-        0.82;
+    opacity: 0.82;
 
     transition:
-        all 0.2s ease;
+        color 0.2s ease,
+        opacity 0.2s ease;
 
 }
 
 
 .links a:hover {
 
-    color:
-        var(--gold);
+    color: var(--gold);
 
-    opacity:
-        1;
+    opacity: 1;
 
 }
 
 
 .links a span {
 
-    margin-left:
-        3px;
+    margin-left: 3px;
 
-    opacity:
-        0.6;
+    opacity: 0.6;
 
 }
-
 
 
 /* =========================================
@@ -362,32 +271,6 @@ body {
 
 .hero {
 
-    position:
-        absolute;
-
-    top:
-        10%;
-
-    left:
-        50%;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        90%;
-
-    text-align:
-        center;
-
-    z-index:
-        10;
-
-    pointer-events:
-        none;
-
-}
-.hero {
     position: absolute;
 
     top: 15%;
@@ -403,12 +286,16 @@ body {
     z-index: 10;
 
     pointer-events: none;
+
 }
 
 
-/* Subtle dark area behind title */
+/* =========================================
+   TITLE BACKGROUND GLOW
+========================================= */
 
 .hero::before {
+
     content: "";
 
     position: absolute;
@@ -419,9 +306,11 @@ body {
     width: 600px;
     height: 350px;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     background:
+
         radial-gradient(
             ellipse,
             rgba(20, 18, 14, 0.22) 0%,
@@ -432,39 +321,8 @@ body {
     z-index: -1;
 
     pointer-events: none;
+
 }
-
-
-/* Roadways title */
-
-.roadways-title {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    font-family: "Amita", serif;
-
-    font-weight: 1000;
-
-    line-height: 1;
-
-    letter-spacing: 5;
-
-    color: #FFF3D8;
-
-    text-shadow:
-        2px 2px 0 #38291F,
-        -2px 2px 0 #38291F,
-        2px -2px 0 #38291F,
-        -2px -2px 0 #38291F,
-        0 8px 25px rgba(0, 0, 0, 0.35);
-}
-
 
 
 /* =========================================
@@ -472,14 +330,20 @@ body {
 ========================================= */
 
 .roadways-title {
+
     margin: 0;
     padding: 0;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
-    font-family: "Amita", serif;
+    font-family:
+        "Amita",
+        serif;
+
     font-weight: 700;
 
     line-height: 1;
@@ -489,54 +353,47 @@ body {
     color: var(--cream);
 
     text-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.28),
-        0 10px 30px rgba(0, 0, 0, 0.22);
+
+        0 4px 10px
+        rgba(0, 0, 0, 0.28),
+
+        0 10px 30px
+        rgba(0, 0, 0, 0.22);
+
 }
 
 
 .roadways-title .deluxe {
-    font-size: clamp(75px, 9vw, 145px);
 
-    transform: translateX(-8px);
+    font-size:
+        clamp(75px, 9vw, 145px);
+
+    transform:
+        translateX(-8px);
 
     margin-bottom: 10px;
-    /* text-shadow:
-        2px 2px 0 #38291F,
-        -2px 2px 0 #38291F,
-        2px -2px 0 #38291F,
-        -2px -2px 0 #38291F,
-        0 8px 25px rgba(0, 0, 0, 0.35); */
+
 }
 
 
 .roadways-title .roadways {
-    font-size: clamp(75px, 9vw, 145px);
 
-/* text-shadow:
-        2px 2px 0 #38291F,
-        -2px 2px 0 #38291F,
-        2px -2px 0 #38291F,
-        -2px -2px 0 #38291F,
-        0 8px 25px rgba(0, 0, 0, 0.35); */
+    font-size:
+        clamp(75px, 9vw, 145px);
 
 }
-
 
 
 /* =========================================
    PLAYER
 ========================================= */
 
-/* .player {
+.player {
 
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        50%;
-
-    bottom:
-        28px;
+    left: 50%;
+    bottom: 28px;
 
     transform:
         translateX(-50%);
@@ -547,73 +404,12 @@ body {
             calc(100vw - 40px)
         );
 
-    min-height:
-        94px;
-
-    padding:
-        10px 18px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        17px;
-
-    z-index:
-        30;
-
-    border-radius:
-        52px;
-
-    background:
-
-        rgba(
-            21,
-            30,
-            26,
-            0.88
-        );
-
-    border:
-        1px solid
-        rgba(
-            245,
-            234,
-            212,
-            0.13
-        );
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-
-        0 22px 65px
-        rgba(0, 0, 0, 0.52);
-
-} */
-
-.player {
-    position: absolute;
-
-    left: 50%;
-    bottom: 28px;
-
-    transform: translateX(-50%);
-
-    width: min(780px, calc(100vw - 40px));
-
     min-height: 94px;
 
     padding: 10px 18px;
 
     display: flex;
+
     align-items: center;
 
     gap: 17px;
@@ -622,30 +418,28 @@ body {
 
     border-radius: 52px;
 
-    /* Transparent glass */
-    /* background: rgba(20, 27, 24, 0);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px); */
+    background:
+        rgba(20, 27, 24, 0.48);
 
-background: rgba(20, 27, 24, 0.48);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(12px);
 
-    /* Subtle glass border */
-    border: 1px solid rgba(245, 234, 212, 0.18);
+    -webkit-backdrop-filter:
+        blur(12px);
 
-    /* Blur whatever is behind the player */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border:
+        1px solid
+        rgba(245, 234, 212, 0.18);
 
     box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.38);
+        0 18px 50px
+        rgba(0, 0, 0, 0.38);
 
     transition:
         transform 0.25s ease,
         background 0.25s ease;
-}
 
+}
 
 
 /* =========================================
@@ -654,29 +448,18 @@ backdrop-filter: blur(10px);
 
 .album-art {
 
-    width:
-        68px;
+    width: 68px;
+    height: 68px;
 
-    height:
-        68px;
+    flex-shrink: 0;
 
-    flex-shrink:
-        0;
+    overflow: hidden;
 
-    overflow:
-        hidden;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     border:
         1px solid
-        rgba(
-            245,
-            234,
-            212,
-            0.16
-        );
+        rgba(245, 234, 212, 0.16);
 
     box-shadow:
         0 6px 18px
@@ -687,29 +470,35 @@ backdrop-filter: blur(10px);
 
 .album-art img {
 
-    width:
-        100%;
+    width: 100%;
+    height: 100%;
 
-    height:
-        100%;
+    display: block;
 
-    object-fit:
-        cover;
+    object-fit: cover;
 
 }
-/* =================================
-   ROTATING RECORD
-================================== */
+
+
+/* =========================================
+   HIDDEN YOUTUBE PLAYER
+========================================= */
+
 #youtube-player {
-    position: fixed;
-    width: 200px;
-    height: 200px;
-    left: -250px;
-    top: 0;
-    opacity: 0;
-    pointer-events: none;
-}
 
+    position: fixed;
+
+    width: 1px;
+    height: 1px;
+
+    left: -9999px;
+    top: -9999px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
 
 
 /* =========================================
@@ -718,14 +507,11 @@ backdrop-filter: blur(10px);
 
 .track-info {
 
-    flex:
-        1;
+    flex: 1;
 
-    min-width:
-        0;
+    min-width: 0;
 
 }
-
 
 
 /* =========================================
@@ -734,26 +520,19 @@ backdrop-filter: blur(10px);
 
 .now-playing {
 
-    margin-bottom:
-        3px;
+    margin-bottom: 3px;
 
-    font-size:
-        8px;
+    font-size: 8px;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    letter-spacing:
-        1.5px;
+    letter-spacing: 1.5px;
 
-    color:
-        var(--gold);
+    color: var(--gold);
 
-    opacity:
-        0.9;
+    opacity: 0.9;
 
 }
-
 
 
 /* =========================================
@@ -762,26 +541,19 @@ backdrop-filter: blur(10px);
 
 .song-name {
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
 }
-
 
 
 /* =========================================
@@ -790,26 +562,19 @@ backdrop-filter: blur(10px);
 
 .artist {
 
-    margin-top:
-        3px;
+    margin-top: 3px;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    color:
-        var(--white-soft);
+    color: var(--white-soft);
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
 }
-
 
 
 /* =========================================
@@ -818,56 +583,55 @@ backdrop-filter: blur(10px);
 
 .progress-container {
 
-    margin-top:
-        9px;
+    margin-top: 9px;
 
 }
 
 
 .progress-bar {
 
-    width:
-        100%;
+    width: 100%;
 
-    height:
-        3px;
+    height: 3px;
 
     background:
-        rgba(
-            245,
-            234,
-            212,
-            0.18
-        );
+        rgba(245, 234, 212, 0.18);
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    overflow:
-        hidden;
+    overflow: hidden;
+
+}
+
+
+.progress-bar:focus-visible {
+
+    outline:
+        1px solid
+        var(--gold);
+
+    outline-offset: 4px;
 
 }
 
 
 .progress {
 
-    width:
-        0%;
+    width: 0%;
 
-    height:
-        100%;
+    height: 100%;
 
     background:
         var(--gold);
 
-    border-radius:
-        10px;
+    border-radius: 10px;
+
+    transition:
+        width 0.15s linear;
 
 }
-
 
 
 /* =========================================
@@ -876,28 +640,18 @@ backdrop-filter: blur(10px);
 
 .time-labels {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    margin-top:
-        4px;
+    margin-top: 4px;
 
-    font-size:
-        8px;
+    font-size: 8px;
 
     color:
-        rgba(
-            245,
-            234,
-            212,
-            0.42
-        );
+        rgba(245, 234, 212, 0.42);
 
 }
-
 
 
 /* =========================================
@@ -906,38 +660,33 @@ backdrop-filter: blur(10px);
 
 .controls {
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        13px;
+    gap: 13px;
 
 }
 
 
 .controls button {
 
-    border:
-        none;
+    border: none;
 
-    background:
-        transparent;
+    background: transparent;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     font-family:
         "Space Grotesk",
         sans-serif;
 
-}
+    -webkit-tap-highlight-color:
+        transparent;
 
+}
 
 
 /* =========================================
@@ -946,46 +695,47 @@ backdrop-filter: blur(10px);
 
 .side-button {
 
-    width:
-        26px;
+    width: 26px;
+    height: 35px;
 
-    height:
-        35px;
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
+    font-size: 12px;
 
-    justify-content:
-        center;
-
-    font-size:
-        12px;
-
-    opacity:
-        0.55;
+    opacity: 0.55;
 
     transition:
-        all 0.2s ease;
+        color 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
 
 }
 
 
 .side-button:hover {
 
-    color:
-        var(--gold);
+    color: var(--gold);
 
-    opacity:
-        1;
+    opacity: 1;
 
     transform:
         scale(1.08);
 
 }
 
+
+.side-button:focus-visible {
+
+    outline:
+        1px solid
+        var(--gold);
+
+    outline-offset: 3px;
+
+}
 
 
 /* =========================================
@@ -994,23 +744,15 @@ backdrop-filter: blur(10px);
 
 .play-button {
 
-    width:
-        50px;
+    width: 50px;
+    height: 50px;
 
-    height:
-        50px;
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         var(--cream) !important;
@@ -1018,18 +760,17 @@ backdrop-filter: blur(10px);
     color:
         #18201c !important;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
     box-shadow:
         0 5px 20px
         rgba(0, 0, 0, 0.25);
 
     transition:
-        all 0.18s ease;
+        background 0.18s ease,
+        transform 0.18s ease;
 
 }
 
@@ -1053,6 +794,16 @@ backdrop-filter: blur(10px);
 }
 
 
+.play-button:focus-visible {
+
+    outline:
+        2px solid
+        var(--gold);
+
+    outline-offset: 4px;
+
+}
+
 
 /* =========================================
    MOBILE
@@ -1071,54 +822,46 @@ backdrop-filter: blur(10px);
 
     .online {
 
-        display:
-            none;
+        display: none;
 
     }
 
 
     .links {
 
-        gap:
-            14px;
+        gap: 14px;
 
     }
 
 
     .links a {
 
-        font-size:
-            11px;
+        font-size: 11px;
 
     }
-
 
 
     /* TITLE */
 
     .hero {
 
-        top:
-            11%;
+        top: 11%;
 
     }
 
 
     .roadways-title .deluxe {
 
-        font-size:
-            68px;
+        font-size: 68px;
 
     }
 
 
     .roadways-title .roadways {
 
-        font-size:
-            68px;
+        font-size: 68px;
 
     }
-
 
 
     /* PLAYER */
@@ -1128,90 +871,76 @@ backdrop-filter: blur(10px);
         width:
             calc(100vw - 20px);
 
-        bottom:
-            14px;
+        bottom: 14px;
 
-        min-height:
-            82px;
+        min-height: 82px;
 
         padding:
             8px 11px;
 
-        gap:
-            11px;
+        gap: 11px;
 
-        border-radius:
-            44px;
+        border-radius: 44px;
 
     }
 
 
     .album-art {
 
-        width:
-            54px;
-
-        height:
-            54px;
+        width: 54px;
+        height: 54px;
 
     }
 
 
     .now-playing {
 
-        font-size:
-            7px;
+        font-size: 7px;
 
     }
 
 
     .song-name {
 
-        font-size:
-            13px;
+        font-size: 13px;
 
     }
 
 
     .artist {
 
-        font-size:
-            10px;
+        font-size: 10px;
 
     }
 
 
     .controls {
 
-        gap:
-            5px;
+        gap: 5px;
 
     }
 
 
     .side-button {
 
-        display:
-            none;
+        width: 21px;
+        height: 35px;
+
+        font-size: 10px;
 
     }
 
 
     .play-button {
 
-        width:
-            44px;
+        width: 44px;
+        height: 44px;
 
-        height:
-            44px;
-
-        font-size:
-            14px;
+        font-size: 14px;
 
     }
 
 }
-
 
 
 /* =========================================
@@ -1223,43 +952,60 @@ backdrop-filter: blur(10px);
 
     .roadways-title .deluxe {
 
-        font-size:
-            47px;
+        font-size: 47px;
 
     }
 
 
     .roadways-title .roadways {
 
-        font-size:
-            59px;
+        font-size: 59px;
 
     }
 
 
     .links a {
 
-        font-size:
-            10px;
+        font-size: 10px;
 
     }
 
 
     .album-art {
 
-        width:
-            48px;
-
-        height:
-            48px;
+        width: 48px;
+        height: 48px;
 
     }
 
 
     .song-name {
 
-        font-size:
-            12px;
+        font-size: 12px;
+
+    }
+
+
+    .controls {
+
+        gap: 2px;
+
+    }
+
+
+    .side-button {
+
+        width: 18px;
+
+        font-size: 9px;
+
+    }
+
+
+    .play-button {
+
+        width: 42px;
+        height: 42px;
 
     }
 

@@ -1,23 +1,39 @@
+/* =================================
+   DELUXE ROADWAYS
+   MUSIC PLAYER
+================================= */
+
+
+/* =================================
+   PLAYER STATE
+================================= */
+
 let player = null;
+
 let currentIndex = 0;
+
+let currentVideoIndex = 0;
+
 let progressTimer = null;
+
 let ready = false;
 
 
 /* =================================
    SONGS
-================================== */
+================================= */
 
 const songs = [
 
-    {
-        title: "Achchha Sil A Diya Toone Mere Pyar Ka",
-        artist: "Sonu Nigam",
+    // {
+    //     title: "Achchha Sil A Diya Toone Mere Pyar Ka",
+    //     artist: "Sonu Nigam",
 
-        videos: [
-            "O6MmErUtO9s"
-        ]
-    },
+    //     videos: [
+    //         "O6MmErUtO9s"
+    //     ]
+    // },
+
 
     {
         title: "Jeeta Tha Jiske Liye",
@@ -26,8 +42,10 @@ const songs = [
         videos: [
             "fa5Yzxdh8e4"
         ]
-    }
-        // {
+    },
+
+
+    // {
     //     title: "Mujhse Mohabbat Ka",
     //     artist: "Kumar Sanu, Alka Yagnik",
 
@@ -361,6 +379,8 @@ const songs = [
     //         "oEg_iXEWlt4"
     //     ]
     // },
+
+
     // {
     //     title: "Tere Dard Se Dil",
     //     artist: "Kumar Sanu",
@@ -602,27 +622,86 @@ const songs = [
     //     ]
     // }
 
-    // Add more songs here
-
 ];
 
 
 /* =================================
+   ELEMENTS
+================================= */
+
+const elements = {
+
+    songName:
+        document.getElementById("songName"),
+
+    artist:
+        document.getElementById("artist"),
+
+    albumArt:
+        document.getElementById("albumArt"),
+
+    progress:
+        document.getElementById("progress"),
+
+    progressBar:
+        document.getElementById("progressBar"),
+
+    currentTime:
+        document.getElementById("currentTime"),
+
+    duration:
+        document.getElementById("duration"),
+
+    playBtn:
+        document.getElementById("playBtn"),
+
+    previousBtn:
+        document.getElementById("previousBtn"),
+
+    nextBtn:
+        document.getElementById("nextBtn"),
+
+    time:
+        document.getElementById("time"),
+
+    listeners:
+        document.getElementById("listeners")
+
+};
+
+
+/* =================================
+   INITIAL VALIDATION
+================================= */
+
+if (!songs.length) {
+
+    elements.songName.textContent =
+        "No songs available";
+
+    elements.artist.textContent =
+        "—";
+
+}
+
+
+/* =================================
    YOUTUBE API
-================================== */
+================================= */
 
 function onYouTubeIframeAPIReady() {
+
+    if (!songs.length) {
+        return;
+    }
+
 
     player = new YT.Player(
         "youtube-player",
         {
 
-            width: "200",
-            height: "200",
-
-            /*
-             * Use the first video's ID.
-             */
+            width: "1",
+            height: "1",
 
             videoId:
                 songs[0].videos[0],
@@ -663,7 +742,7 @@ function onYouTubeIframeAPIReady() {
 
 /* =================================
    PLAYER READY
-================================== */
+================================= */
 
 function onPlayerReady() {
 
@@ -679,17 +758,49 @@ function onPlayerReady() {
 
 /* =================================
    LOAD SONG
-================================== */
+================================= */
 
 function loadSong(
     index,
-    autoplay = true
+    autoplay = true,
+    videoIndex = 0
 ) {
 
     if (
         !player ||
-        !ready
+        !ready ||
+        !songs.length
     ) {
+
+        return;
+
+    }
+
+
+    if (
+        index < 0 ||
+        index >= songs.length
+    ) {
+
+        index = 0;
+
+    }
+
+
+    const song =
+        songs[index];
+
+
+    if (
+        !song ||
+        !Array.isArray(song.videos) ||
+        !song.videos.length
+    ) {
+
+        console.error(
+            "Invalid song:",
+            song
+        );
 
         return;
 
@@ -698,90 +809,94 @@ function loadSong(
 
     currentIndex = index;
 
+    currentVideoIndex = videoIndex;
 
-    const song =
-        songs[currentIndex];
-
-
-    /*
-     * Get YouTube ID from videos array.
-     */
 
     const videoId =
-        song.videos[0];
+        song.videos[currentVideoIndex];
 
 
-    /*
-     * Update song title.
-     */
+    if (!videoId) {
 
-    document.getElementById(
-        "songName"
-    ).textContent =
-        song.title;
+        console.error(
+            "Invalid YouTube video ID"
+        );
 
+        return;
 
-    /*
-     * Update artist.
-     */
-
-    document.getElementById(
-        "artist"
-    ).textContent =
-        song.artist;
+    }
 
 
-    /*
-     * YouTube thumbnail.
-     *
-     * This means you don't need
-     * to manually provide album art.
-     */
+    /* =================================
+       UPDATE SONG INFORMATION
+    ================================== */
 
-    document.getElementById(
-        "albumArt"
-    ).src =
+    elements.songName.textContent =
+        song.title || "Unknown Song";
+
+
+    elements.artist.textContent =
+        song.artist || "Unknown Artist";
+
+
+    /* =================================
+       UPDATE ALBUM ART
+    ================================== */
+
+    elements.albumArt.src =
         `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
 
-    /*
-     * Reset progress.
-     */
+    elements.albumArt.onerror =
+        function () {
 
-    document.getElementById(
-        "progress"
-    ).style.width =
+            this.src =
+                "assets/songs/Hindi/song-image/gmo.svg";
+
+        };
+
+
+    /* =================================
+       RESET PROGRESS
+    ================================== */
+
+    elements.progress.style.width =
         "0%";
 
 
-    document.getElementById(
-        "currentTime"
-    ).textContent =
+    elements.progressBar.setAttribute(
+        "aria-valuenow",
+        "0"
+    );
+
+
+    elements.currentTime.textContent =
         "0:00";
 
 
-    document.getElementById(
-        "duration"
-    ).textContent =
+    elements.duration.textContent =
         "0:00";
 
 
     stopProgress();
 
 
-    /*
-     * Reset play button.
-     */
+    /* =================================
+       RESET PLAY BUTTON
+    ================================== */
 
-    document.getElementById(
-        "playBtn"
-    ).textContent =
+    elements.playBtn.textContent =
         "▶";
 
+    elements.playBtn.setAttribute(
+        "aria-label",
+        "Play"
+    );
 
-    /*
-     * Load YouTube video.
-     */
+
+    /* =================================
+       LOAD YOUTUBE VIDEO
+    ================================== */
 
     if (autoplay) {
 
@@ -804,7 +919,7 @@ function loadSong(
 
 /* =================================
    PLAY / PAUSE
-================================== */
+================================= */
 
 function togglePlay() {
 
@@ -842,46 +957,55 @@ function togglePlay() {
 
 /* =================================
    YOUTUBE STATE
-================================== */
+================================= */
 
 function onPlayerStateChange(
     event
 ) {
 
-    const playBtn =
-        document.getElementById(
-            "playBtn"
-        );
+    if (!elements.playBtn) {
+        return;
+    }
 
 
-    /*
-     * PLAYING
-     */
+    /* =================================
+       PLAYING
+    ================================== */
 
     if (
         event.data ===
         YT.PlayerState.PLAYING
     ) {
 
-        playBtn.textContent =
+        elements.playBtn.textContent =
             "Ⅱ";
+
+        elements.playBtn.setAttribute(
+            "aria-label",
+            "Pause"
+        );
 
         startProgress();
 
     }
 
 
-    /*
-     * PAUSED
-     */
+    /* =================================
+       PAUSED
+    ================================== */
 
     else if (
         event.data ===
         YT.PlayerState.PAUSED
     ) {
 
-        playBtn.textContent =
+        elements.playBtn.textContent =
             "▶";
+
+        elements.playBtn.setAttribute(
+            "aria-label",
+            "Play"
+        );
 
         stopProgress();
 
@@ -890,26 +1014,24 @@ function onPlayerStateChange(
     }
 
 
-    /*
-     * VIDEO ENDED
-     */
+    /* =================================
+       VIDEO ENDED
+    ================================== */
 
     else if (
         event.data ===
         YT.PlayerState.ENDED
     ) {
 
-        playBtn.textContent =
+        elements.playBtn.textContent =
             "▶";
 
+        elements.playBtn.setAttribute(
+            "aria-label",
+            "Play"
+        );
+
         stopProgress();
-
-
-        /*
-         * Only go to the next song
-         * when the current song
-         * actually finishes.
-         */
 
         nextSong();
 
@@ -920,12 +1042,12 @@ function onPlayerStateChange(
 
 /* =================================
    NEXT SONG
-================================== */
+================================= */
 
 function nextSong() {
 
     if (
-        songs.length === 0
+        !songs.length
     ) {
 
         return;
@@ -940,6 +1062,9 @@ function nextSong() {
         songs.length;
 
 
+    currentVideoIndex = 0;
+
+
     loadSong(
         currentIndex,
         true
@@ -950,12 +1075,14 @@ function nextSong() {
 
 /* =================================
    PREVIOUS SONG
-================================== */
+================================= */
 
 function previousSong() {
 
     if (
-        !player
+        !player ||
+        !ready ||
+        !songs.length
     ) {
 
         return;
@@ -982,10 +1109,6 @@ function previousSong() {
     }
 
 
-    /*
-     * Otherwise go to previous song.
-     */
-
     currentIndex =
         (
             currentIndex -
@@ -993,6 +1116,9 @@ function previousSong() {
             songs.length
         ) %
         songs.length;
+
+
+    currentVideoIndex = 0;
 
 
     loadSong(
@@ -1004,8 +1130,8 @@ function previousSong() {
 
 
 /* =================================
-   PROGRESS
-================================== */
+   START PROGRESS
+================================= */
 
 function startProgress() {
 
@@ -1023,7 +1149,7 @@ function startProgress() {
 
 /* =================================
    STOP PROGRESS
-================================== */
+================================= */
 
 function stopProgress() {
 
@@ -1044,7 +1170,7 @@ function stopProgress() {
 
 /* =================================
    UPDATE PROGRESS
-================================== */
+================================= */
 
 function updateProgress() {
 
@@ -1076,60 +1202,52 @@ function updateProgress() {
     }
 
 
-    const percentage =
+    let percentage =
         (
             current /
             total
         ) * 100;
 
 
-    /*
-     * Progress bar.
-     */
+    percentage =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                percentage
+            )
+        );
 
-    document.getElementById(
-        "progress"
-    ).style.width =
+
+    elements.progress.style.width =
         `${percentage}%`;
 
 
-    /*
-     * Current time.
-     */
-
-    document.getElementById(
-        "currentTime"
-    ).textContent =
-        formatTime(
-            current
-        );
+    elements.progressBar.setAttribute(
+        "aria-valuenow",
+        Math.round(percentage)
+    );
 
 
-    /*
-     * Total duration.
-     */
+    elements.currentTime.textContent =
+        formatTime(current);
 
-    document.getElementById(
-        "duration"
-    ).textContent =
-        formatTime(
-            total
-        );
+
+    elements.duration.textContent =
+        formatTime(total);
 
 }
 
 
 /* =================================
    FORMAT TIME
-================================== */
+================================= */
 
-function formatTime(
-    seconds
-) {
+function formatTime(seconds) {
 
     if (
-        !seconds ||
-        isNaN(seconds)
+        !Number.isFinite(seconds) ||
+        seconds < 0
     ) {
 
         return "0:00";
@@ -1138,9 +1256,7 @@ function formatTime(
 
 
     seconds =
-        Math.floor(
-            seconds
-        );
+        Math.floor(seconds);
 
 
     const minutes =
@@ -1168,42 +1284,96 @@ function formatTime(
 
 
 /* =================================
-   BUTTONS
-================================== */
+   SEEK
+================================= */
 
-document.getElementById(
-    "playBtn"
-).addEventListener(
+function seekToPosition(
+    clientX
+) {
+
+    if (
+        !player ||
+        !ready
+    ) {
+
+        return;
+
+    }
+
+
+    const rect =
+        elements.progressBar
+            .getBoundingClientRect();
+
+
+    if (!rect.width) {
+        return;
+    }
+
+
+    let percentage =
+        (
+            clientX -
+            rect.left
+        ) /
+        rect.width;
+
+
+    percentage =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                percentage
+            )
+        );
+
+
+    const duration =
+        player.getDuration();
+
+
+    if (
+        duration &&
+        duration > 0
+    ) {
+
+        player.seekTo(
+            duration *
+            percentage,
+            true
+        );
+
+        updateProgress();
+
+    }
+
+}
+
+
+/* =================================
+   PROGRESS BAR CLICK
+================================= */
+
+elements.progressBar.addEventListener(
     "click",
-    togglePlay
-);
+    function (event) {
 
+        seekToPosition(
+            event.clientX
+        );
 
-document.getElementById(
-    "nextBtn"
-).addEventListener(
-    "click",
-    nextSong
-);
-
-
-document.getElementById(
-    "previousBtn"
-).addEventListener(
-    "click",
-    previousSong
+    }
 );
 
 
 /* =================================
-   PROGRESS BAR SEEK
-================================== */
+   PROGRESS BAR KEYBOARD
+================================= */
 
-document.getElementById(
-    "progressBar"
-).addEventListener(
-    "click",
-    function(event) {
+elements.progressBar.addEventListener(
+    "keydown",
+    function (event) {
 
         if (
             !player ||
@@ -1215,32 +1385,58 @@ document.getElementById(
         }
 
 
-        const rect =
-            this.getBoundingClientRect();
-
-
-        const clickPosition =
-            event.clientX -
-            rect.left;
-
-
-        const percentage =
-            clickPosition /
-            rect.width;
-
-
         const duration =
             player.getDuration();
 
 
         if (
-            duration &&
-            duration > 0
+            !duration ||
+            duration <= 0
         ) {
 
+            return;
+
+        }
+
+
+        const current =
+            player.getCurrentTime();
+
+
+        const jump =
+            5;
+
+
+        if (
+            event.key ===
+            "ArrowRight"
+        ) {
+
+            event.preventDefault();
+
             player.seekTo(
-                duration *
-                percentage,
+                Math.min(
+                    duration,
+                    current + jump
+                ),
+                true
+            );
+
+        }
+
+
+        else if (
+            event.key ===
+            "ArrowLeft"
+        ) {
+
+            event.preventDefault();
+
+            player.seekTo(
+                Math.max(
+                    0,
+                    current - jump
+                ),
                 true
             );
 
@@ -1252,7 +1448,7 @@ document.getElementById(
 
 /* =================================
    YOUTUBE ERROR
-================================== */
+================================= */
 
 function onPlayerError(
     event
@@ -1264,28 +1460,46 @@ function onPlayerError(
     );
 
 
+    const song =
+        songs[currentIndex];
+
+
     /*
-     * IMPORTANT:
-     *
-     * Do NOT call nextSong().
-     *
-     * If the selected YouTube upload
-     * cannot be embedded, stay on this
-     * song.
+     * Try another YouTube ID
+     * if the current song has
+     * multiple video options.
      */
 
-    const artistElement =
-        document.getElementById(
-            "artist"
+    if (
+        song &&
+        Array.isArray(song.videos) &&
+        currentVideoIndex <
+            song.videos.length - 1
+    ) {
+
+        currentVideoIndex++;
+
+        loadSong(
+            currentIndex,
+            true,
+            currentVideoIndex
         );
 
+        return;
+
+    }
+
+
+    /* =================================
+       DISPLAY ERROR
+    ================================== */
 
     if (
         event.data === 101 ||
         event.data === 150
     ) {
 
-        artistElement.textContent =
+        elements.artist.textContent =
             "This video cannot be played here";
 
     }
@@ -1294,7 +1508,7 @@ function onPlayerError(
         event.data === 100
     ) {
 
-        artistElement.textContent =
+        elements.artist.textContent =
             "Video unavailable";
 
     }
@@ -1303,14 +1517,14 @@ function onPlayerError(
         event.data === 153
     ) {
 
-        artistElement.textContent =
+        elements.artist.textContent =
             "YouTube requires a valid page referrer";
 
     }
 
     else {
 
-        artistElement.textContent =
+        elements.artist.textContent =
             `YouTube playback error (${event.data})`;
 
     }
@@ -1319,9 +1533,196 @@ function onPlayerError(
     stopProgress();
 
 
-    document.getElementById(
-        "playBtn"
-    ).textContent =
+    elements.playBtn.textContent =
         "▶";
 
+    elements.playBtn.setAttribute(
+        "aria-label",
+        "Play"
+    );
+
 }
+
+
+/* =================================
+   CLOCK
+================================= */
+
+function updateClock() {
+
+    const now =
+        new Date();
+
+
+    let hours =
+        now.getHours();
+
+
+    const minutes =
+        String(
+            now.getMinutes()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const period =
+        hours >= 12
+            ? "pm"
+            : "am";
+
+
+    hours =
+        hours % 12 ||
+        12;
+
+
+    elements.time.textContent =
+        `${hours}:${minutes} ${period}`;
+
+}
+
+
+updateClock();
+
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =================================
+   LISTENER COUNT
+================================= */
+
+function updateListeners() {
+
+    /*
+     * Decorative listener count.
+     * This is intentionally not real-time.
+     */
+
+    const base =
+        34;
+
+
+    const variation =
+        Math.floor(
+            Math.random() * 7
+        ) - 3;
+
+
+    elements.listeners.textContent =
+        Math.max(
+            1,
+            base + variation
+        );
+
+}
+
+
+updateListeners();
+
+
+setInterval(
+    updateListeners,
+    30000
+);
+
+
+/* =================================
+   BUTTON EVENTS
+================================= */
+
+elements.playBtn.addEventListener(
+    "click",
+    togglePlay
+);
+
+
+elements.nextBtn.addEventListener(
+    "click",
+    nextSong
+);
+
+
+elements.previousBtn.addEventListener(
+    "click",
+    previousSong
+);
+
+
+/* =================================
+   KEYBOARD SHORTCUTS
+================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        /*
+         * Don't interfere with typing
+         * into inputs or other controls.
+         */
+
+        const tag =
+            document.activeElement.tagName;
+
+
+        if (
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT"
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            event.code === "Space"
+        ) {
+
+            event.preventDefault();
+
+            togglePlay();
+
+        }
+
+
+        else if (
+            event.code === "ArrowRight"
+        ) {
+
+            nextSong();
+
+        }
+
+
+        else if (
+            event.code === "ArrowLeft"
+        ) {
+
+            previousSong();
+
+        }
+
+    }
+);
+
+
+/* =================================
+   CLEANUP
+================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function () {
+
+        stopProgress();
+
+    }
+);
